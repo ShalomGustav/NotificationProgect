@@ -206,7 +206,6 @@
             return this;
         }
 
-
         public bool IsAssignableTo(string typeName)
         {
             return Type.GetTypeInheritanceChainTo(typeof(BaseType)).Concat(new[] { typeof(BaseType) }).Any(t => typeName.Equals(t.Name));
