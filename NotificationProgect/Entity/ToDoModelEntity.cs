@@ -1,9 +1,10 @@
 ﻿using NotificationProgect.Models;
+using NotificationProgect.Repositories.Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace NotificationProgect.Entity;
 
-public class ToDoModelEntity
+public class ToDoModelEntity : Repositories.Common.Entity, IDateEntity<ToDoModelEntity, ToDoModel>
 {
     [StringLength(256)]
     public string Name { get; set; }
@@ -19,8 +20,8 @@ public class ToDoModelEntity
     public ToDoType Type { get; set; }
 
     public DateTime CreateDate { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
 
 
     public ToDoModel ToModel(ToDoModel model)
