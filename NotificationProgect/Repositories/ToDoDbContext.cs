@@ -9,10 +9,6 @@ namespace NotificationProgect.Repositories
         {
         }
 
-        public ToDoDbContext(DbContextOptions options) : base(options)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ToDoModelEntity>().ToTable("ToDo").HasKey(x => x.Id);
