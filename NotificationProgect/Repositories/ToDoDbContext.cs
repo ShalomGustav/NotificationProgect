@@ -5,6 +5,10 @@ namespace NotificationProgect.Repositories
 {
     public class ToDoDbContext : DbContext
     {
+        public ToDoDbContext()
+        {
+        }
+
         public ToDoDbContext(DbContextOptions<ToDoDbContext> options) : base(options)
         {
         }
