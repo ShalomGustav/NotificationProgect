@@ -1,0 +1,9 @@
+﻿@model ToDoModel[]
+<h1>Список заметок</h1>
+
+
+@foreach (var item in Model)
+{
+    <h3>Время: @item.CreateDate </h3>
+    <h3>Время: @item.StartDate </h3>
+}

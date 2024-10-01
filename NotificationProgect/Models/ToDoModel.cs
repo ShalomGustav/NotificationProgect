@@ -1,6 +1,6 @@
 ﻿namespace NotificationProgect.Models;
 
-public class ToDoModel
+public class ToDoModel : Repositories.Common.Entity
 {
     public DateTime CreateDate { get; set; }
     public DateTime? StartDate { get; set; }
