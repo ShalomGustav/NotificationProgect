@@ -9,6 +9,7 @@ namespace NotificationProgect.Repositories
         Task<ToDoModelEntity[]> GetToDoByDateAsync(DateTime[] date);
         Task<ToDoModelEntity> GetToDoByIdAsync(string id);
         Task<ToDoModelEntity[]> GetToDoAllAsync();
+        
 
     }
 }
