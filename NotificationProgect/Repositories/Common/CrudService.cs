@@ -31,6 +31,8 @@ public abstract class CrudService<TModel,TEntity>
         return models;
     }
 
+
+
     protected abstract Task<TEntity[]> LoadEntities(
         IRepository repository,
         IEnumerable<string> ids);

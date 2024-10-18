@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NotificationProgect.Models;
 using NotificationProgect.Services;
 using System.Diagnostics;
@@ -55,7 +56,7 @@ namespace NotificationProgect.Controllers
         }
 
         [HttpGet("date")]
-        public async Task<IActionResult> GetToDoByDateAsync(DateTime[] date)
+        public async Task<IActionResult> GetToDoByDateAsync(DateTime date)
         {
             if (date == null)
             {
@@ -86,6 +87,14 @@ namespace NotificationProgect.Controllers
         {
             var result = await _service.GetToDoAllAsync();
             return View("ListNotifications",result);
+        }
+
+        [HttpGet("getToDoTest")]
+        public async Task<IActionResult> SearchByDate(DateTime searchDate)
+        {
+            var filteredItems = await _service.GetToDoByDateAsync(searchDate);
+
+            return Json(filteredItems);
         }
     }
 }

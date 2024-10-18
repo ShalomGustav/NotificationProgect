@@ -2,6 +2,7 @@
 using NotificationProgect.Models;
 using NotificationProgect.Repositories;
 using NotificationProgect.Repositories.Common;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NotificationProgect.Services
 {
@@ -20,24 +21,18 @@ namespace NotificationProgect.Services
             return _toDos;//
         }
 
-        public async Task<ToDoModel[]> GetToDoByDateAsync(DateTime[]? date)
+        public async Task<ToDoModel[]> GetToDoByDateAsync(DateTime date)
         {
-            if (date == null)
-            {
-                throw new ArgumentNullException(nameof(date));
-            }
-
             using (var repository = _repositoryFactory())
             {
-                var dateEntity = await repository.GetToDoByDateAsync(date);
+                var dateEntity = await repository.GetToDoByDateAsync(new[] { date });
 
                 if (dateEntity == null)
                 {
                     throw new NullReferenceException(nameof(dateEntity));
                 }
 
-                var newDate = dateEntity.Select(x => x.ToModel(AbstractTypeFactory<ToDoModel>.TryCreateInstance())).ToArray();
-                return newDate;
+                return dateEntity.Select(x => x.ToModel(AbstractTypeFactory<ToDoModel>.TryCreateInstance())).ToArray();
             }
         }
 
